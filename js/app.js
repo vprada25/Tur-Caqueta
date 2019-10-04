@@ -1,3 +1,22 @@
+var user = document.getElementById('user');
+var pass = document.getElementById('pass');
+
+
+function inicio() {
+    
+    if (user.value == "admin" && pass.value == "admin") {
+        console.log("credenciales validas");
+        window.location = "indexAdmin.html";
+    }
+    if(user.value=="usuario" && pass.value == "usuario"){
+        console.log("credenciales validas");
+        window.location = "cliente.html"
+
+    } else {
+        console.log("credenciales invalidas")
+    }
+}
+
 
 function login(){
     window.location="login.html";

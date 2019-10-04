@@ -39,6 +39,14 @@ header .overlay {
     z-index: 1;
 }
 
+#carrito{
+    background: url("../images/carrito-de-compras.png") no-repeat center ;
+    height: 80px;
+    width: 80px;
+    padding: 20px;
+
+}
+
 @media (pointer: coarse) and (hover: none) {
     header {
         background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center center;
