@@ -9,11 +9,13 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Register</title>
+  <title>REGISTRO</title>
 
   <!-- Custom fonts for this template-->
   <link href="Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="Admin/css/sb-admin-2.min.css" rel="stylesheet">
@@ -37,24 +39,22 @@
               <form class="user">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="Primer Nombre">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                      placeholder="Primer Nombre">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Segundo">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName"
+                      placeholder="Segundo">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email">
+                  <input type="email" class="form-control form-control-user" id="user" placeholder="Email">
                 </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repetir Contraseña">
-                  </div>
+                <div class="form-group ">
+                  <input type="password" class="form-control form-control-user" id="pass" placeholder="Contraseña">
                 </div>
-                <a href="javascript:login()" class="btn btn-primary btn-user btn-block">
+
+                <a href="javascript:registrarUsuario()" class="btn btn-primary btn-user btn-block">
                   Registrar Cuenta
                 </a>
                 <hr>
@@ -73,8 +73,8 @@
                 <a class="small" href="javascript:login()">¿Ya tienes una cuenta?</a>
               </div>
               <div class="text-center">
-                  <a class="small" href="javascript:principal()">Volver a la Pagina Principal</a>
-                </div>
+                <a class="small" href="javascript:principal()">Volver a la Pagina Principal</a>
+              </div>
             </div>
           </div>
         </div>
@@ -82,6 +82,12 @@
     </div>
 
   </div>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+  <script src="js/app.js"></script>
 
   <!-- Bootstrap core JavaScript-->
   <script src="Admin/vendor/jquery/jquery.min.js"></script>
@@ -92,7 +98,7 @@
 
   <!-- Custom scripts for all pages-->
   <script src="Admin/js/sb-admin-2.min.js"></script>
-  <script src="js/app.js"></script>
+
 
 </body>
 
