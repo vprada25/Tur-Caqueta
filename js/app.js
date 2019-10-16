@@ -61,7 +61,6 @@ function registrarUsuario() {
 function login() {
     firebase.auth().signInWithEmailAndPassword(correo.value, contrasena.value)
         .then(function () {
-            limpiar();
             console.log("Usuario validado exitosamnte...");
             admin()
         })
