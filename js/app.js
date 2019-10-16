@@ -13,9 +13,9 @@ var firebaseConfig = {
 
 
 firebase.initializeApp(firebaseConfig);
-
-
 var db = firebase.firestore();
+
+
 var correo = document.getElementById('user');
 var contrasena = document.getElementById('pass');
 //var btnCerrar = document.getElementById('btnCerrar');
@@ -26,32 +26,40 @@ function registrarUsuario() {
     firebase.auth().createUserWithEmailAndPassword(correo.value, contrasena.value)
         .then(function () {
             console.log("Usuario registrado");
-            //limpiar();
             db.collection("USUARIO").add({
                 usuario: correo.value,
                 password: contrasena.value
 
             })
-            
+
                 .then(function (docRef) {
                     console.log("Document written with ID: ", docRef.id);
-                    
+                    limpiar();
+
                 })
                 .catch(function (error) {
                     console.error("Error adding document: ", error);
+                    limpiar();
                 });
 
+                var user = firebase.auth().currentUser;
 
-            
-            
-        
+                user.sendEmailVerification().then(function() {
+                  // Email sent.
+                  console.log("mensaje enviado....");
+                  limpiar();
+                }).catch(function(error) {
+                  // An error happened.
+                  console.log("correo invalido...");
+                  limpiar();
+                });
+                firebase.auth().languageCode = 'fr';
+
         })
 
         .catch(function (error) {
-            // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
-            // ...
             console.log(errorCode + "::" + errorMessage);
         });
 }
@@ -62,10 +70,11 @@ function login() {
     firebase.auth().signInWithEmailAndPassword(correo.value, contrasena.value)
         .then(function () {
             console.log("Usuario validado exitosamnte...");
-            admin()
+            window.location.href = "indexAdmin.html";
+            limpiar();
         })
         .catch(function (error) {
-            // Handle Errors here.
+
             var errorCode = error.code;
             var errorMessage = error.message;
             console.log(errorCode + "::" + errorMessage);
@@ -77,15 +86,13 @@ function limpiar() {
     contrasena.value = "";
 }
 
-function admin() {
-    window.location = "indexAdmin.html";
-}
+
 
 function observador() {
     firebase.auth().onAuthStateChanged(function (user) {
         if (user) {
-            // User is signed in.
-            var displayName = user.displayName;
+
+            var displayName = user.email;
             var email = user.email;
             var emailVerified = user.emailVerified;
             var photoURL = user.photoURL;
@@ -95,72 +102,25 @@ function observador() {
             console.log(user);
             //btnCerrar.classList.remove('d-none');
             //btnLogin.classList.add('d-none');
-            nombre.innerHTML = `Bienvenido ` + email;
+            //nombre.innerHTML = `Bienvenido ` + email;
 
         } else {
-            //btnLogin.classList.remove('d-none');
             console.log("Ningun usuario activo");
         }
     });
 }
 
-observador();
-
-
-
 function salir() {
     firebase.auth().signOut()
         .then(function () {
-            limpiar();
             console.log("Usuario cierra sesion");
+            window.location.href = "index.html";
+            limpiar();
+
         })
         .catch(function (error) {
             console.log(error);
         });
 }
 
-/*
-function login() {
-    window.location = "login.html";
-}
-
-function registrar() {
-    window.location = "register.html";
-}
-function registrar2() {
-    window.location = "../register.html";
-}
-function principal2() {
-    window.location = "../index.html";
-}
-
-function principal() {
-    window.location = "index.html";
-}
-
-
-
-function olvidoC() {
-    window.location = "Admin/forgot-password.html";
-}
-
-function cards() {
-    window.location = "Admin/cards.html";
-}
-
-function button() {
-    window.location = "Admin/buttons.html";
-}
-
-function cayonning() {
-    window.location = "cayoning.html";
-}
-
-function torrentismo() {
-    window.location = "torrentismo.html";
-}
-
-function trekking() {
-    window.location = "trekking.html";
-}
-*/
+observador();
